@@ -33,7 +33,7 @@ class ArticleAnalysis(Base):
     description = Column(String)
     main_text = Column(String)
     analysis_status = Column(AnalyzedStatus)
-    analyze_comments = Column(String)
+    analysis_comments = Column(String)
     suggested_prompts = relationship('SuggestedPrompt')
     suggested_hashtags = relationship('SuggestedHashtag')
 
