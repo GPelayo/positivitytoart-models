@@ -1,12 +1,17 @@
 from sqlalchemy.orm import declarative_base, relationship
 from sqlalchemy import Boolean, Column, Date, Enum, ForeignKey, Integer, String
+from sqlalchemy_serializer import SerializerMixin
 
 Base = declarative_base()
 
 AnalyzedStatus = Enum('OK', 'ERROR', name='scraping_status')
 
 
-class RedditArticlePost(Base):
+class PositivityObject(Base, SerializerMixin):
+    __abstract__ = True
+
+
+class RedditArticlePost(PositivityObject):
     __tablename__ = 'reddit_article_post'
 
     article_id = Column(String, primary_key=True)
@@ -23,7 +28,7 @@ class RedditArticlePost(Base):
         self.url = url
 
 
-class ArticleAnalysis(Base):
+class ArticleAnalysis(PositivityObject):
     __tablename__ = 'article_analysis'
 
     article_id = Column(String, primary_key=True)
@@ -44,7 +49,7 @@ class ArticleAnalysis(Base):
         self.url = url
 
 
-class SuggestedPrompt(Base):
+class SuggestedPrompt(PositivityObject):
     __tablename__ = 'suggested_prompt'
 
     prompt_id = Column(String, primary_key=True)
@@ -58,7 +63,7 @@ class SuggestedPrompt(Base):
         self.article_post_id = article_post_id
 
 
-class SuggestedHashtag(Base):
+class SuggestedHashtag(PositivityObject):
     __tablename__ = 'suggested_hashtag'
 
     hashtag_id = Column(String, primary_key=True)
@@ -72,7 +77,7 @@ class SuggestedHashtag(Base):
         self.article_post_id = article_post_id
 
 
-class InstagramImagePost(Base):
+class InstagramImagePost(PositivityObject):
     __tablename__ = 'instagram_image_post'
 
     image_post_id = Column(String, primary_key=True)
