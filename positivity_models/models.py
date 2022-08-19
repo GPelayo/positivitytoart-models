@@ -79,6 +79,7 @@ class SuggestedHashtag(PositivityObject):
     __tablename__ = 'suggested_hashtag'
 
     hashtag_id = Column(String, primary_key=True)
+    article_id = Column(String, primary_key=True)
     name = Column(String)
     article_id = Column(String, ForeignKey('article_analysis.article_id'))
 
