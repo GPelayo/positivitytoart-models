@@ -63,6 +63,18 @@ class SuggestedPrompt(PositivityObject):
         self.article_post_id = article_post_id
 
 
+class Hashtag(PositivityObject):
+    __tablename__ = 'hashtag'
+
+    hashtag_id = Column(String, primary_key=True)
+    hashtag_text = Column(String)
+
+    def __init__(self, hashtag_id, hashtag_text):
+        super(Hashtag, self).__init__()
+        self.hashtag_id = hashtag_id
+        self.hashtag_text = hashtag_text
+
+
 class SuggestedHashtag(PositivityObject):
     __tablename__ = 'suggested_hashtag'
 
@@ -70,11 +82,10 @@ class SuggestedHashtag(PositivityObject):
     name = Column(String)
     article_id = Column(String, ForeignKey('article_analysis.article_id'))
 
-    def __init__(self, prompt_id, prompt_text, article_post_id):
+    def __init__(self, hashtag_id, article_id):
         super(SuggestedHashtag, self).__init__()
-        self.prompt_id = prompt_id
-        self.prompt_text = prompt_text
-        self.article_post_id = article_post_id
+        self.hashtag_id = hashtag_id
+        self.article_id = article_id
 
 
 class InstagramImagePost(PositivityObject):
