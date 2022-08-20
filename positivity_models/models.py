@@ -80,8 +80,6 @@ class SuggestedHashtag(PositivityObject):
 
     hashtag_id = Column(String, primary_key=True)
     article_id = Column(String, primary_key=True)
-    name = Column(String)
-    article_id = Column(String, ForeignKey('article_analysis.article_id'))
 
     def __init__(self, hashtag_id, article_id):
         super(SuggestedHashtag, self).__init__()
