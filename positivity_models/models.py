@@ -75,6 +75,19 @@ class Hashtag(PositivityObject):
         self.hashtag_text = hashtag_text
 
 
+class ArtStyle(PositivityObject):
+    __tablename__ = 'art_style'
+
+    art_style_id = Column(String, primary_key=True)
+    name = Column(String)
+    hashtags = relationship('hashtags')
+
+    def __init__(self, art_style_id, name):
+        super(PositivityObject, self).__init__()
+        self.name = name
+        self.art_style_id = art_style_id
+
+
 class SuggestedHashtag(PositivityObject):
     __tablename__ = 'suggested_hashtag'
 
@@ -94,3 +107,4 @@ class InstagramImagePost(PositivityObject):
     caption = Column(String)
     image_location = Column(String)
     image_location_type = Column(String)
+    art_styles = relationship('art_style')
