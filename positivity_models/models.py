@@ -49,20 +49,6 @@ class ArticleAnalysis(PositivityObject):
         self.url = url
 
 
-class SuggestedPrompt(PositivityObject):
-    __tablename__ = 'suggested_prompt'
-
-    prompt_id = Column(String, primary_key=True)
-    prompt_text = Column(String)
-    article_id = Column(String, ForeignKey('article_analysis.article_id'))
-
-    def __init__(self, prompt_id, prompt_text, article_post_id):
-        super(SuggestedPrompt, self).__init__()
-        self.prompt_id = prompt_id
-        self.prompt_text = prompt_text
-        self.article_post_id = article_post_id
-
-
 class Hashtag(PositivityObject):
     __tablename__ = 'hashtag'
 
