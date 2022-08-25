@@ -1,5 +1,5 @@
 from sqlalchemy.orm import declarative_base, relationship
-from sqlalchemy import Boolean, Column, Date, Enum, ForeignKey, Integer, String, Table
+from sqlalchemy import Boolean, Column, Date, DateTime, Enum, ForeignKey, Integer, String, Table
 from sqlalchemy_serializer import SerializerMixin
 
 Base = declarative_base()
