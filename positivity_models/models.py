@@ -1,5 +1,5 @@
 from sqlalchemy.orm import declarative_base, relationship
-from sqlalchemy import Boolean, Column, Date, Enum, ForeignKey, Integer, String
+from sqlalchemy import Boolean, Column, Date, Enum, ForeignKey, Integer, String, Table
 from sqlalchemy_serializer import SerializerMixin
 
 Base = declarative_base()
@@ -99,6 +99,8 @@ class SuggestedHashtag(PositivityObject):
         self.hashtag_id = hashtag_id
         self.article_id = article_id
 
+# image_post_artstyles = Table('image_post_art_style', Base.metadata, Column('art_style_id'), ForeignKey(art_syle.id))
+
 
 class InstagramImagePost(PositivityObject):
     __tablename__ = 'instagram_image_post'
@@ -107,4 +109,4 @@ class InstagramImagePost(PositivityObject):
     caption = Column(String)
     image_location = Column(String)
     image_location_type = Column(String)
-    art_styles = relationship('art_style')
+    #artyles add tables here
