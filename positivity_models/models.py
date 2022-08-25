@@ -39,8 +39,7 @@ class ArticleAnalysis(PositivityObject):
     main_text = Column(String)
     analysis_status = Column(AnalyzedStatus)
     analysis_comments = Column(String)
-    suggested_prompts = relationship('SuggestedPrompt')
-    suggested_hashtags = relationship('SuggestedHashtag')
+    date_analyzed = Column(DateTime)
 
     def __init__(self, article_id, title, url):
         super(ArticleAnalysis, self).__init__()
@@ -54,6 +53,7 @@ class Hashtag(PositivityObject):
 
     hashtag_id = Column(String, primary_key=True)
     hashtag_text = Column(String)
+    artstyle_id = Column(String, ForeignKey('art_style.art_style_id'))
 
     def __init__(self, hashtag_id, hashtag_text):
         super(Hashtag, self).__init__()
@@ -66,7 +66,7 @@ class ArtStyle(PositivityObject):
 
     art_style_id = Column(String, primary_key=True)
     name = Column(String)
-    hashtags = relationship('hashtags')
+    hashtags = relationship('Hashtag')
 
     def __init__(self, art_style_id, name):
         super(PositivityObject, self).__init__()
