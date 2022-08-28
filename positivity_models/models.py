@@ -85,10 +85,12 @@ class SuggestedHashtag(PositivityObject):
         self.hashtag_id = hashtag_id
         self.article_id = article_id
 
-class InstagramImagePost(PositivityObject):
-    __tablename__ = 'instagram_image_post'
+
+class ScheduledSocialsPost(PositivityObject):
+    __tablename__ = 'scheduled_socials_post'
 
     image_post_id = Column(String, primary_key=True)
     caption = Column(String)
     image_location = Column(String)
     image_location_type = Column(String)
+    scheduled_date = Column(DateTime)
