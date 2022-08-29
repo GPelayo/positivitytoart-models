@@ -3,7 +3,7 @@
 from setuptools import setup, Require
 
 setup(name='Positivity to Art - Models',
-      version='0.0.8',
+      version='0.0.9',
       description='Model Objects for Positivity to Art',
       author='Geryl Pelayo',
       author_email='hi@gerylpelayo.com',

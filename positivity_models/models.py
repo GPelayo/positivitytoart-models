@@ -66,7 +66,7 @@ class ArtStyle(PositivityObject):
 
     art_style_id = Column(String, primary_key=True)
     name = Column(String)
-    hashtags = relationship('Hashtag')
+    hashtags = relationship('Hashtag', cascade='all,delete')
 
     def __init__(self, art_style_id, name):
         super(PositivityObject, self).__init__()
@@ -86,11 +86,21 @@ class SuggestedHashtag(PositivityObject):
         self.article_id = article_id
 
 
-class ScheduledSocialsPost(PositivityObject):
-    __tablename__ = 'scheduled_socials_post'
+class SocialsDraft(PositivityObject):
+    __tablename__ = 'socials_draft'
 
     image_post_id = Column(String, primary_key=True)
     caption = Column(String)
     image_location = Column(String)
     image_location_type = Column(String)
+
+
+class ScheduledSocialsPost(PositivityObject):
+    __tablename__ = 'scheduled_socials_post'
+
+    post_action_id = Column(String, primary_key=True)
+    image_post_id = Column(String)
     scheduled_date = Column(DateTime)
+    socials_platform = Column(String)
+    is_posted = Column(Boolean)
+    posting_notes = Column(String)
